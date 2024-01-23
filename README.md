@@ -1,13 +1,13 @@
 Hey, Documentation should be fun to read. You're welcome!
 
-# DESING PATTERNS - Common in Object Orineted Program Design | Node.js
+# DESING PATTERNS - Common in Object Orieneted Program Design | Node.js
 
 This Repositorys' main aim is to illustrate the variety of common Design Patterns used in Object Oriented Design; in this context Node.js was used (No frameworks).
-Get started simply, by running `node index.js` the code in the terminal pointing to the directories [1. Without Pattern]() and [2. With Pattern](), to see the difference via console outputs of when the a design pattern has not been used and when it has been used.
+Get started simply, by running `node index.js` the code in the terminal pointing to the directories [1. Without Pattern]() and [2. With Pattern](), to see the difference via console outputs of when the a design pattern has not been used and when it has been used. Continue reading to understand...
 
 ## Overview
 
-Each Pattern describes a problem which occurs over and over again in our environment, and then describes the core of the solution to that problem, in such a way that you can use this solution a million times over, without ever doing it the same way twice.
+Each Pattern describes a problem which occurs over and over again in the software developement environment, and then describes the core of the solution to that problem, in such a way that you can use this solution a million times over, without ever doing it the same way twice.
 
 Design Pattern Essentials:
 
@@ -16,7 +16,7 @@ Design Pattern Essentials:
 - The Solution
 - Consequences
 
-### Example: Code Navigation to singleton pattern.
+### Code Repo Navigation; Example: to understand singleton pattern.
 
 1. Navigate to [1. Creational Patterns](1.%20Creational%20Patterns/)/[1. Singleton Pattern](1.%20Creational%20Patterns/1.%20Singleton%20Pattern/)/[1. Without Pattern](./1.%20Creational%20Patterns/1.%20Singleton%20Pattern/1.%20Without%20Pattern/)/[index.js](1.%20Creational%20Patterns/1.%20Singleton%20Pattern/1.%20Without%20Pattern/index.js).
 2. Read through the code files in the folder of [1. Without Pattern](./1.%20Creational%20Patterns/1.%20Singleton%20Pattern/1.%20Without%20Pattern/); when familiar with the code, get to the terminal pointing to the directory and run `node index.js`. See the console output.

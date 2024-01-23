@@ -37,7 +37,7 @@ Design Pattern Essentials:
 
 ## Code Context
 
-To start let's agree this; Learning node.js or any programming language is just a subtle thing of being a developer; Great node.js masterminds must use some kind of Design Pattern to solve problems. Well, this Documentation (and Repository), gets you familiar with the code and the design pattern. The code examples reflect real world senario of an e-commerce enterprise, where you might at some point, have an employer, employee, shopper, distributer and more. We reflect on the concept of a store and make code solutions to solve various issues that may rise while making a virtual store in node.js.
+To start let's agree this; Learning node.js or any programming language is just a subtle thing of being a developer; Great node.js masterminds must use some kind of Design Pattern to solve code problems. Well, this Documentation (and Repository), gets you familiar with the code and the design patterns used in the code. The code examples reflect real world senario of an e-commerce enterprise, where you might at some point, have an employer, employee, shopper, distributer and more. We reflect on the concept of a store and make code solutions to solve various issues that may rise while making a virtual store in node.js.
 
 ## What I learned
 

@@ -48,9 +48,9 @@ To start let's agree this; Learning node.js or any programming language is just 
 Intent: "Ensure a class only has one instance, and provide a global point of access to it."
 
 In the code samples, the [logger class](1.%20Creational%20Patterns/1.%20Singleton%20Pattern/2.%20With%20pattern/Logger.js) of the store activity is used to create a singleton. Notice in that file, the instantiation of the Logger, is done during the export of the class. so what is exported, is the Logger instance, which will be shared globally.
-When the [index.js](1.%20Creational%20Patterns/1.%20Singleton%20Pattern/2.%20With%20pattern/index.js) file of the [2. With Pattern](1.%20Creational%20Patterns/1.%20Singleton%20Pattern/2.%20With%20pattern/) directory is executed, you'le notice that All four logs are created, as the logger class has been instanciated once, and is shared globally.
+When the [index.js](1.%20Creational%20Patterns/1.%20Singleton%20Pattern/2.%20With%20pattern/index.js) file of the [2. With Pattern](1.%20Creational%20Patterns/1.%20Singleton%20Pattern/2.%20With%20pattern/) directory is executed, you'le notice that All four logs are created, as the logger class has been instantiated once, and is shared globally.
 
-To see the difference; when singleton pattern is not implemented, run the [index.js](./1.%20Creational%20Patterns/1.%20Singleton%20Pattern/1.%20Without%20Pattern/index.js) file of [1. Without pattern](./1.%20Creational%20Patterns/1.%20Singleton%20Pattern/1.%20Without%20Pattern/) folder. You'll notice that even in the index.js, of the folder not implementing the singleton, the logger has been instanciated in the file its self. Meaning each of the files that instanciate the logger are not sharing a logger.
+To see the difference; when singleton pattern is not implemented, run the [index.js](./1.%20Creational%20Patterns/1.%20Singleton%20Pattern/1.%20Without%20Pattern/index.js) file of [1. Without pattern](./1.%20Creational%20Patterns/1.%20Singleton%20Pattern/1.%20Without%20Pattern/) folder. You'll notice that even in the index.js, of the folder not implementing the singleton, the logger has been instantiated in the file its self. Meaning each of the files that instanciate the logger are not sharing a logger.
 
 ### Prototype Pattern
 
@@ -58,6 +58,39 @@ Intent: "Specify the kind of objects to create using a prototypical instance, an
 
 Instead of spending time creating Objects that implement the same idea and are essentially sharing properties, we can create a prototype then let each individual object have a copy of the prototype, then the objects can elaborate more properties to be distinct from the prototype.
 
-[without prototype](1.%20Creational%20Patterns/2.%20Prototype%20Pattern/1.%20Without%20Pattern/index.js): the index.js file has multiple instances of a shopper class, and most of the shoppers basically share the same item list; i.e., (camping knife, tent, backpack, and map). However we can create a [scout prototype](./1.%20Creational%20Patterns/2.%20Prototype%20Pattern/2.%20With%20Pattern/scout.js), where [each shopper](./1.%20Creational%20Patterns/2.%20Prototype%20Pattern/2.%20With%20Pattern/index.js), newly instanciated, can first aquire the scout prototype, then they can elaborate more properties like the name and extra items added to list, making them distinct from the prototype.
+[without prototype](1.%20Creational%20Patterns/2.%20Prototype%20Pattern/1.%20Without%20Pattern/index.js): the index.js file has multiple instances of a shopper class, and most of the shoppers basically share the same item list; i.e., (camping knife, tent, backpack, and map). However we can create a [scout prototype](./1.%20Creational%20Patterns/2.%20Prototype%20Pattern/2.%20With%20Pattern/scout.js), where [each shopper](./1.%20Creational%20Patterns/2.%20Prototype%20Pattern/2.%20With%20Pattern/index.js), newly instantiated, can first aquire the scout prototype, then they can elaborate more properties like the name and extra items added to list, making them distinct from the prototype.
 
 ### Factory Pattern
+
+Intent: "Define an interface for creating an object, but let subclasses decide which class to instantiate. Factory Method lets a class defer instantiation to subclasses."
+
+Caveat: In this code, we'll not be using classes to defer subclasses instantiation, rather, we'll create a method, that will implement an if else statement, determining which subclass to instantiate.
+
+Now, in the [index.js](./1.%20Creational%20Patterns/3.%20Factory%20Pattern/2.%20With%20Pattern/index.js) using a userFactory, you'll notice that we having a method userFactory(), that accepts multiple parameters and arguments. Now depending on the kind of of parameters passed, different subclasses get instantiated as it can be seen in [userFactory.js](./1.%20Creational%20Patterns/3.%20Factory%20Pattern/2.%20With%20Pattern/userFactory.js). Here, we create either an employee or a shopper, and the if else logic determines which user to instantiate.
+
+Without a factory pattern, the code get so verbose, as we get to add multiple subclasses for instantiation. [see index.js without factory pattern](1.%20Creational%20Patterns/3.%20Factory%20Pattern/1.%20Without%20Pattern/index.js).
+
+Next, let's look at at the the builder pattern. kind of helps suppliment the factory pattern much greater.
+
+### Builder Pattern
+
+Intent: "Separate the construction of a complex object from its representation so that the same construction process can create different representations."
+
+Now, remember when discussing the Factory pattern, in the intent definition, we mentioned that a class can be used for instantiation of subclasses; the builder pattern actually does as the factory pattern specifies, and more. When looking at the [Index.js](1.%20Creational%20Patterns/3.%20Factory%20Pattern/2.%20With%20Pattern/index.js) file, that has the factory pattern applied to it, you'll almost notice that is difficult to know what's the meaning of each parameter passed during instantiation of a user. The Builder pattern, solves this problem.
+
+In the [index.js]() using the builder pattern, we see that only the name of the person is being received as the instantiation parameter for the PersonBuiler. Now to apply other properties to the person object, the PersonBuilder class implements methods that when called by chaining on the PersonBuilder, they apply the properties to the Person class instantiation, after the build() method gets executed.
+
+For example:
+
+```
+const jack = new PersonBuilder('Jack Weru Kioni').makeEmployee().makePartTime().build();
+```
+
+as compared to:
+
+```
+const jack = new Person("Jack Weru Kioni", 'employee', true, 0);
+                    // Name, isEmployee, isPartime, hasMoney
+```
+
+The Builder Pattern, specifies that the factory pattern be used in class instansiation which intern instantiates specific subclasses; however to the main class instatiation should use class methods to build on towards specific subclass.

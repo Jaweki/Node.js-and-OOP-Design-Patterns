@@ -41,6 +41,8 @@ To start let's agree this; Learning node.js or any programming language is just 
 
 ## What I learned
 
+##
+
 ![](./public-resources/creational-pattern-label.png)
 
 ### Singleton Pattern
@@ -94,3 +96,89 @@ const jack = new Person("Jack Weru Kioni", 'employee', true, 0);
 ```
 
 The Builder Pattern, specifies that the factory pattern be used in class instansiation which intern instantiates specific subclasses; however to the main class instatiation should use class methods to build on towards specific subclass.
+
+##
+
+![](./public-resources/structural-pattern-label.png)
+
+### The Adapter Pattern
+
+Intent: "convert the interface of a class into another clients expect. Adapter lets classes work together that couldn't otherwise because of incompatible interfaces."
+
+In this repository we consider the case of the local storage api. The localStorage api is readily available in the browser environment, but its not available in node environment. However, there are cases where you may need to program in a manner similar to the browser methods.
+
+Now, in this Repo, we created a [class LocalStorage](2.%20Structural%20Patterns/1.%20The%20Adapter%20Pattern/2.%20With%20Pattern/localStorage.js), that when initialized, checks if there is a localStorage.json file already existing; if not, it will just initialize an empty item object. The LocalStorage class also offers methods for interacting with the class object e.g., get length(), getItem(), setItem(), clear(). This methods are similar to browser environment as in they allow seeking the lenght, retiving and setting a key value pair, as well as deleting the entire localStorage object and .json file.
+
+When the code in the index.js is written, a similar interface to that of the browser environment is used, that can this time run in node.js environment, thanks to The Adapter Pattern.
+
+### The Proxy Pattern
+
+Intent: "Provide a surrogate or placeholder for another object to control access to it."
+
+For a real life day to day example, we know a that company might have a CEO. now, the CEO is always busy and cannot directly be reached if employees, stakeholders, or clients need to communicate issues; rather, an assistant is always in place to relay only the important and immediate issues, to the CEO. A proxy, is similar to that CEO.
+
+In addition to managing expensive objects, proxies can be used to:
+
+- Manage a remote resource
+- Provide data validation of input
+- Provide security
+- Cache Data
+- Log event actions
+
+Just as the Adapter pattern, proxies must provide the same interface as the adapter pattern.
+In this repo, the [proxy code](./2.%20Structural%20Patterns/2.%20The%20Proxy%20Pattern/2.%20With%20Pattern/FS_Proxy.js) is used to control access to README files in that path. There are two kinds of README files in [the proxy pattern directory](2.%20Structural%20Patterns/2.%20The%20Proxy%20Pattern/2.%20With%20Pattern/); a README.txt and README.md. The FS_proxy, is a JavaScript class that wraps around the fs module of node.js. It offers the same interface as the fs module; i.e., the same methods available in fs module and their order of parameters they accept is similar in both FS_proxy and fs module; However, the fs module only allows reading of .txt files and blocks all .md files from being read.
+
+Now the code example can be subject to modification and advancement, for example, the proxy can provide a security interface to check for access token and password, before allowing a read for the .md files.
+
+### The Composite Pattern
+
+Intent: "Composing objects into tree structures to represent part-whole hierachies. Composite lets clients treat individual objects and compositions of objects uniformly."
+
+Composites work with trees, and when it comes to programming, trees are everywhere. One of the common trees developers interact with is the File System; where directories can be used to group other directories containing files in them.
+
+- Tree Data-Structure terminology
+  Nodes that contain groups of other nodes, are referred to as branches.
+  In the file system, a file folder represents a branch.
+  Traversing the tree, to nodes that don't contain or group other nodes,
+  those node are referred to as leafs.
+
+The Composite Pattern allows treating Leafs and branches uniformly.
+
+To see the effect of the composite programming, execute the [index.js](2.%20Structural%20Patterns/3.%20The%20Composite%20Pattern/2.%20With%20Pattern/index.js) in the composite directory.
+The code has a classes [Catalog Item]() and [Catalog Group](). The catalog group class allows programming for catalog items in groups. From executing the [code](./2.%20Structural%20Patterns/3.%20The%20Composite%20Pattern/2.%20With%20Pattern/index.js), you'll notice that the catalog groups are shown by UpperCase statements and catalog items have an item name and item price.
+
+### Decorators
+
+#### Disclimer - Not similar syntax as decorators in Typescript, but similar purpose.
+
+Intent: "Attach additional responsibilities to an object dynamically. Decorators provide a flexible alternative to subclassing for extending functionality."
+
+In the Decorator directory we realize the following classes Shopper and InventoryItem. In this tutorial, we apply decorators to the InventoryItem class. Notice we have base inventoryItems Walkman and Neclace. What if, we wanted a diamond and golden-diamond Neclace and a diamond Walkman. In addition to adjusting the name an inventory item, the decorators adjust the price.
+
+Now in some level, decorators can be mishandled as to replace class inheritance where a super class is extended; this should be avoided, as:
+
+- decorators can be misused, especially by attempting to replicate the behavior of class inheritance, it can lead to confusion and unexpected results in the code.
+- Class inheritance is a fundamental object-oriented programming concept. It establishes a hierarchical relationship between classes, where a subclass inherits properties and methods from a superclass. Using decorators as a substitute for class inheritance can lead to a loss of clarity in the code, as it deviates from the conventional and widely understood paradigm.
+- Misusing decorators in this context could result in code that is harder to understand, maintain, and debug.
+
+This code creates classes that wrap around other classes and act as decorator. This has been done, just to explain the context; but in real software environments, decorators are applied with the syntax below:
+
+```js
+function decorator(params) {
+    // Some logic here...
+}
+
+class InventoryItem {
+
+    @decorator
+
+    constructor(itemName='unnamed item', price=0) {
+        this.item = itemName;
+        this.price = price;
+    }
+
+    // Additional code...
+}
+```
+
+However, using decorators with the syntax in this repo, is useful when code functionality is to be applied dynamically; and I would highly advice, in this case consider class inheritance.
